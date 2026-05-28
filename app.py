@@ -1,8 +1,8 @@
 import streamlit as st
 import google.generativeai as genai
 
-st.title("✨ 팀장님 스타일 맞춤 교정기 (고도화 버전)")
-st.write("1차 맞춤법/어문 규범 검사 ➔ 2차 팀장님 스타일 윤문을 순차적으로 진행합니다.")
+st.title("✨ 맞춤 교정기 (고도화 버전)")
+st.write("1차 맞춤법/어문 규범 검사 ➔ 2차 윤문을 순차적으로 진행합니다.")
 
 # 사이드바: API 키 입력
 with st.sidebar:
@@ -17,12 +17,12 @@ if st.button("하이브리드 교정 시작"):
     else:
         try:
             genai.configure(api_key=api_key)
-            model = genai.GenerativeModel('gemini-1.5-flash')
+            model = genai.GenerativeModel('gemini-2.5-flash')
 
             # ==========================================
             # [Step 2] 1차 필터: 국립국어원 어문 규범 기반 맞춤법 교정
             # ==========================================
-            with st.spinner("1차: 국립국어원 어문 규범에 맞춰 맞춤법과 띄어쓰기를 교정 중입니다..."):
+            with st.spinner("1차: 국립국어원 어문 규범에 맞춰 맞춤법과 띄어쓰기를 교정 중입니다...!"):
                 grammar_prompt = f"""
                 당신은 국립국어원의 표준국어대사전과 한국어 어문 규범을 엄격하게 준수하는 맞춤법 전문가입니다.
                 다음 원본 글의 띄어쓰기, 맞춤법, 문장 부호, 표준어 여부를 검사하고 교정해 주세요.
